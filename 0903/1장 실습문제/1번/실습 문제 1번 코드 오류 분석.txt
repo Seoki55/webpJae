@@ -1,0 +1,16 @@
+<DOCTYPE html>   HTML 첫번째 오류 :  DOCTYPE html 앞에 !가 들어가야 함
+<html>
+<head>
+<meta charset="utf-8">
+<title>오류를 찾으세요</title>
+<style>
+    h3 { text-align : center; color : darkred; }
+    span { color = blue; font-size : 20px; }   css 오류 : =이 아니라 :이어야 함
+HTML 두번째 오류 : style의 닫힘이 누락되었다. </style>이 추가되어야 함
+</head>
+<body>
+<h3>Elvis Presley</h3>
+He was an American singer and actor. In November 1956,
+he is often referred to as "<span>the King of Rock and Roll</span>".
+</body>
+</html>
