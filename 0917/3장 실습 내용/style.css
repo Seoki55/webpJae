@@ -1,0 +1,81 @@
+/* 기본 설정 */
+body {
+  font-family: "맑은 고딕", sans-serif;
+  background-color: #f0f4f8;
+  margin: 40px;
+  line-height: 1.6;
+}
+
+/* 제목 스타일 */
+h1 {
+  color: #0066cc;   /* 진한 하늘색 */
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+h2 {
+  color: #34495e;
+  margin-top: 30px;
+}
+
+/* 리스트 스타일 */
+ul {
+  list-style-type: square;
+  padding-left: 20px;
+  background: #ecf0f1;
+  border-left: 4px solid #2980b9;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+/* 폼 스타일 */
+form {
+  margin-top: 20px;
+  width: 340px;
+}
+
+/* fieldset 스타일 */
+fieldset {
+  border: 2px solid #2980b9;
+  border-radius: 10px;
+  padding: 20px;
+  background: #fff;
+}
+
+legend {
+  font-weight: bold;
+  color: #2980b9;
+  padding: 0 8px;
+}
+
+/* 입력창 스타일 */
+label {
+  display: block;
+  margin: 8px 0 4px;
+  font-weight: bold;
+}
+
+input {
+  width: 95%;
+  padding: 8px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* 버튼 스타일 */
+button {
+  background-color: #2980b9;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  width: 100%;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #1f6391;
+}
+
