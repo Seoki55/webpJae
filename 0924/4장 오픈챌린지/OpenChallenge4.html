@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>스마트폰</title>
+    <style>
+    body {
+      font-family: "맑은 고딕", "Malgun Gothic", sans-serif;
+      line-height: 1.7;
+      margin: 36px;
+      color: #222;
+    }
+    h1 {
+      text-align: left;   /* 제목 왼쪽 정렬 */
+      color: #0b3d91;
+    }
+    h2 { color: #0a6b3a; margin-top: 28px; }
+    .section { max-width: 900px; margin: 0 auto; }
+    figure { text-align: center; margin-top: 20px; }
+    figcaption { margin-top: 6px; font-size: 0.95em; color: #555; }
+    ul.features { margin: 8px 0 20px 20px; }
+    audio { display:block; margin: 10px 0 20px 0; } /* 왼쪽 정렬 */
+
+    /* footer는 페이지(=body) 기준 왼쪽 정렬되도록 스타일 지정 */
+    footer {
+      text-align: left;
+      margin-top: 20px;
+      /* 필요하면 배경/패딩 등 추가 가능 */
+    }
+  </style>
+  <link href="OpenChallenge4.css" type="text/css" rel="stylesheet">
+</head>    
+<body>
+  <div class="section">
+    <h1>스마트폰</h1>
+
+    <!-- 간단한 설명 -->
+    <p>
+      스마트폰은 컴퓨터를 결합한 무선 휴대전화기입니다. pc에서 실행되는 운영체제보다 작게 만든
+      모바일 운영체제를 탑재하여 인터넷 검색, 이메일, 간단한 문서 작성, 카메라, 오디오 및 비디오 재생 등
+      pc의 기능을 거의 모두 가지고 있습니다
+    </p>
+
+    <!-- 오디오 삽입 -->
+    <audio controls>
+      <source src="스마트폰 녹음 파일.m4a" type="audio/mpeg">
+      브라우저가 오디오 태그를 지원하지 않습니다.
+    </audio>
+
+    <!-- 목차 -->
+    <h2>목차</h2>
+    <ul>
+      <li><a href="#history">역사</a></li>
+      <li><a href="#android">안드로이드</a></li>
+      <li><a href="#iphone">아이폰</a></li>
+      <li><a href="#sample">샘플</a></li>
+    </ul>
+
+    <!-- 본문 -->
+    <h2 id="history">역사</h2>
+    <p>
+     현대적 의미의 스마트폰은 단순한 휴대전화에 컴퓨팅 기능을 결합한 장치입니다. 
+      상업적으로 널리 알려진 최초의 스마트폰으로는 1994년에 출시된 
+      <strong>IBM의 Simon Personal Communicator</strong>가 있습니다. 
+      Simon은 전화 기능뿐 아니라 터치스크린, 이메일, 팩스 전송, 간단한 앱 기능 등을 제공하여 
+      오늘날 스마트폰의 전신 역할을 했습니다. 
+    </p>
+
+    <h2 id="android">안드로이드</h2>
+    <p>
+      안드로이드(영어로 Android)는 구글이 주도하는 모바일 운영체제로, 2008년 상용화 이후 다양한 제조사에 채택되며 
+      전 세계 스마트폰 시장 점유율의 대부분을 차지하고 있습니다.
+    </p>
+
+    <h2 id="iphone">
+      <a href="https://en.wikipedia.org/wiki/IPhone" target="_blank" style="color:inherit; text-decoration:none;">아이폰</a>
+    </h2>
+    <p>
+      아이폰(영어로 Iphone)은 2007년 1월 9일 애플이 발표한 스마트폰 시리즈입니다. 미국의 샌프란시스코에서 열린
+      맥월드 2007에서 애플 창업자들 중 한 명인 스티브 잡스가 발표했습니다.
+    </p>
+
+    <h2 id="sample">샘플</h2>
+    <figure style="margin-top:40px;">
+      <figcaption id="sample"><a>스마트폰 샘플</a></figcaption>
+      <img src="smartphone.png" alt="스마트폰 샘플 이미지" width="500">
+    </figure>
+
+  </div> <!-- .section 끝 -->
+
+  <!-- footer를 .section 바깥으로 옮겼습니다. 이제 페이지 여백 기준 왼쪽으로 정렬됩니다 -->
+  <footer>
+    <p><a href="survey4.html">설문조사</a></p>
+  </footer>
+
+</body>
+</html>
