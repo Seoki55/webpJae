@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>설문조사</title>
+</head>
+<body>
+  <header>
+    <h1>설문지</h1>
+    <p>소프트웨어 기술에 대한 여러분의 의견을 듣습니다. 많은 참여 부탁드립니다.</p>
+  </header>
+
+  <section>
+    <form>
+      <p>학년:
+        <label><input type="radio" name="grade" value="1">1학년</label>
+        <label><input type="radio" name="grade" value="2">2학년</label>
+        <label><input type="radio" name="grade" value="3">3학년</label>
+        <label><input type="radio" name="grade" value="4">4학년</label>
+      </p>
+
+      <p>성별:
+        <label><input type="radio" name="gender" value="male">남</label>
+        <label><input type="radio" name="gender" value="female">여</label>
+      </p>
+
+      <p>관심 분야:
+        <label><input type="checkbox" name="field" value="mobile">모바일</label>
+        <label><input type="checkbox" name="field" value="web">웹</label>
+        <label><input type="checkbox" name="field" value="ai">인공지능</label>
+      </p>
+
+      <p>남기고 싶은 말:<br>
+        <textarea rows="5" cols="40"></textarea>
+      </p>
+
+      <p><input type="submit" value="제출"></p>
+    </form>
+  </section>
+</body>
+</html>
