@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>:hover 활용</title>
+        
+        <style>
+            .card {
+               width: 120px;
+               height: 180px;
+               background-image: url("스페이드 10 뒷면.png");
+               background-size: 100% 100%;
+               background-repeat: no-repeat;
+               background-position: center;
+               background-color: white;
+               margin: 20px;
+               border: 1px solid #333;
+            }
+            .card:hover {
+                background-image: url("스페이드 10 앞면.png");
+                background-size: 100% 100%;
+                background-repeat: no-repeat;
+                background-position: center;
+                background-color: white;
+            }
+        </style>
+
+    </head>
+    <body>
+        <h3>:hover 활용</h3>
+        <hr>
+        <p>마우스를 올리면 카드의 앞면이 보인다.</p>
+        <div class="card"></div>
+    </body>
+</html>
