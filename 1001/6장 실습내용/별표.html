@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>별표 찍기</title>
+    <script>
+        function printStars() {
+            let n = parseInt(document.getElementById("lines").value);
+
+      // 왼쪽 정렬
+      let left = "";
+      for (let i = 1; i <= n; i++) {
+        left += "*".repeat(i) + "\n";
+      }
+
+      // 오른쪽 정렬
+      let right = "";
+      for (let i = 1; i <= n; i++) {
+        right += " ".repeat(n - i) + "*".repeat(i) + "\n";
+      }
+
+      // 피라미드
+      let pyramid = "";
+      for (let i = 1; i <= n; i++) {
+        pyramid += " ".repeat(n - i) + "*".repeat(2 * i - 1) + "\n";
+      }
+
+      // 마름모 (피라미드 + 역피라미드)
+      let diamond = "";
+      // 위쪽 피라미드
+      for (let i = 1; i <= n; i++) {
+        diamond += " ".repeat(n - i) + "*".repeat(2 * i - 1) + "\n";
+      }
+      // 아래쪽 역피라미드
+      for (let i = n - 1; i >= 1; i--) {
+        diamond += " ".repeat(n - i) + "*".repeat(2 * i - 1) + "\n";
+      }
+
+      // 결과 출력
+      document.getElementById("left").innerText = left;
+      document.getElementById("right").innerText = right;
+      document.getElementById("pyramid").innerText = pyramid;
+      document.getElementById("diamond").innerText = diamond;
+        }
+    </script>
+    <style>
+        /* 제목 꾸미기 */
+        .pattern-title {
+            font-family: Arial, sans-serif; /* 원하는 글씨체 */
+            font-size: 18px;                /* h2보다 작게 */
+            font-weight: normal;            /* 굵지 않게 */
+            margin-top: 15px;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        pre {
+            background: #f8f8f8;
+            padding: 8px;
+            border-radius: 5px;
+        }
+    </style>
+    </head>
+    <body>
+        <h1>별표 찍기</h1>
+    <label for="lines">줄 수를 입력하세요:</label>
+    <input type="number" id="lines" />
+    <button onclick="printStars()">출력</button>
+
+    <div class="pattern-title">왼쪽 정렬</div>
+    <pre id="left"></pre>
+
+    <div class="pattern-title">오른쪽 정렬</div>
+    <pre id="right"></pre>
+
+    <div class="pattern-title">피라미드</div>
+    <pre id="pyramid"></pre>
+
+    <div class="pattern-title">마름모</div>
+    <pre id="diamond"></pre> 
+    </body>
+</html>

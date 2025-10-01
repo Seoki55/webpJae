@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>윤년 평년 판별</title>
+        <script>
+            function checkYear() {
+                const year = parseInt(document.getElementById("yearInput").value);
+                let result = "";
+
+                if ((year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0)) {
+                    result = year + "년은 윤년입니다.";
+                } else {
+                    result = year + "년은 평년입니다.";
+                }
+
+                document.getElementById("result").innerText = result;
+            }
+        </script>
+    </head>
+    <body>
+        <h1>윤년 평년 판별기</h1>
+        <label for="yearInput">연도를 입력하세요:</label>
+        <input type="number" id="yearInput" />
+        <button onclick="checkYear()">판별</button>
+        <p id="result"></p>
+    </body>
+</html>
