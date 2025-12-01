@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>AI Mood Player</title>
+        <link rel="stylesheet" href="./styles.css" />
+        <meta name="description" content="얼굴 표정 감정 분석으로 맞춤 음악을 재생하는 AI Mood Player" />
+    </head>
+    <body>
+        <!-- Top Navigation -->
+        <header class="navbar">
+            <div class="nav-left">
+                <div class="logo">🎵</div>
+                <div class="brand">
+                    <div class="title">AI Mood Player</div>
+                    <div class="caption">당신의 감정을 음악으로</div>
+                </div>
+                <nav class="menu">
+                    <a href="#features">기능</a>
+                    <a href="#how">작동 방식</a>
+                </nav>
+            </div>
+            <div class="nav-right">
+                <button id="notifications-btn" class="btn btn-ghost icon-only" title="알림">🔔<span id="notif-badge" class="badge hidden">0</span></button>
+                <button id="auth-open" class="btn btn-primary-glow">로그인/회원가입</button>
+                <button id="profile-btn" class="btn btn-ghost hidden">👤 프로필</button>
+                <button id="logout-btn" class="btn btn-tertiary hidden">로그아웃</button>
+                <!-- Spotify 버튼 제거됨 -->
+            </div>
+        </header>
+
+        <!-- Hero -->
+        <section class="hero">
+            <h1>당신의 감정이 완벽한 플레이리스트를 만듭니다</h1>	
+            <p class="hero-sub">AI가 얼굴 표정을 분석하고 지금 이 순간에 딱 맞는 음악을 자동으로 추천해 드립니다.</p>
+            <div class="cta-row">
+                <button id="cta-upload" class="btn btn-primary-glow">사진 업로드</button>
+                <!-- 웹캠 CTA 제거 -->
+            </div>
+            <div class="features" id="features">
+                <!-- 실시간 분석 카드 제거 -->
+                <div class="feature-card">
+                    <div class="icon">🎵</div>
+                    <div class="title">Spotify 연동</div>
+                    <div class="desc">수백만 곡 중 완벽 매칭</div>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">💙</div>
+                    <div class="title">맞춤형 학습</div>
+                    <div class="desc">취향을 학습하는 추천</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Panels -->
+        <main class="main container">
+            <div class="main-grid">
+                <!-- Left: Analysis Panel (웹캠 관련 UI 제거, 탭에서 웹캠 버튼 제거) -->
+                <section class="card panel">
+                    <div class="panel-header">
+                        <div class="segmented">
+                            <button id="tab-upload" class="seg active">사진 업로드</button>
+                            <!-- 웹캠 탭 제거 -->
+                        </div>
+                    </div>
+
+                    <!-- Upload Panel -->
+                    <div class="panel-body panel-upload">
+                        <div id="dropzone" class="dropzone">
+                            <div class="drop-icon">⬆</div>
+                            <div class="drop-title">사진을 여기에 드롭하세요</div>
+                            <div class="drop-sub">사진을 업로드하세요 (JPG, PNG, GIF)</div>
+                            <input type="file" id="image-input" accept="image/*" hidden />
+                        </div>
+                        <div id="preview" class="preview hidden">
+                            <img id="preview-img" alt="미리보기" />
+                        </div>
+                        <div class="row">
+                            <button id="analyze-btn" class="btn primary">분석하기</button>
+                            <button id="demo-btn" class="btn">테스트 모드</button>
+                        </div>
+                        <div class="tips">
+                            <div class="tips-title">더 정확한 분석을 위한 팁</div>
+                            <ul>
+                                <li>얼굴이 정면으로 잘 보이는 사진을 사용하세요</li>
+                                <li>밝은 조명에서 촬영하면 더 정확합니다</li>
+                                <li>안경이나 마스크는 벗는 것이 좋아요</li>
+                            </ul>
+                        </div>
+                        <p id="status" class="status"></p>
+                    </div>
+
+                    <!-- (웹캠 패널 제거) -->
+                </section>
+
+                <!-- Right: Recommendation / Results -->
+                <section class="card panel" id="panel-reco">
+                    <div class="panel-title">음악 추천</div>
+                    <div class="result-box hidden" id="result-box">
+                        <div class="result-line"><span class="label">감정:</span> <span id="emotion-text">-</span></div>
+                        <div class="result-line"><span class="label">무드:</span> <span id="mood-text">-</span></div>
+                        <div class="result-line"><span class="label">신뢰도:</span> <span id="confidence-text">-</span></div>
+                    </div>
+                    <div id="embed" class="embed placeholder">
+                        <div class="placeholder-inner">
+                            <div class="big-icon">대기중</div>
+                            <div class="ph-title">음악 추천을 기다리는 중</div>
+                            <div class="ph-desc">사진을 업로드하면 당신의 감정에 맞는 플레이리스트를 추천해드립니다.</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <button id="play-on-spotify" class="btn btn-secondary">내 Spotify 기기에서 재생 시도</button>
+                        <button id="like-btn" class="btn btn-primary">좋아요</button>
+                        <button id="skip" class="btn">다른 추천 보기</button>
+                        <button id="reset-learning" class="btn btn-tertiary">학습 초기화</button>
+                    </div>
+                    <p class="hint">브라우저 정책상 자동 재생이 제한될 수 있습니다. 재생 버튼을 눌러주세요.</p>
+                </section>
+            </div>
+        </main>
+
+        <!-- How it works / Info -->
+        <section id="how" class="how container">
+            <div class="how-header">간단한 3단계</div>
+            <div class="how-grid">
+                <div class="how-card">
+                    <div class="icon">📷</div>
+                    <div class="title">사진 업로드</div>
+                    <div class="desc">사진을 업로드하세요</div>
+                </div>
+                <div class="how-card">
+                    <div class="icon">🤖</div>
+                    <div class="title">AI 감정 분석</div>
+                    <div class="desc">표정을 분석해 현재 상태를 파악합니다</div>
+                </div>
+                <div class="how-card">
+                    <div class="icon">🎧</div>
+                    <div class="title">맞춤 음악 추천</div>
+                    <div class="desc">무드에 맞는 플레이리스트를 재생합니다</div>
+                </div>
+            </div>
+<!-- ...existing code... -->
+        </section>
+
+        <footer class="footer">
+            <p>Built with Spotify Embed & Web API, Face++ API (optional), face-api.js. 이 데모는 교육/개발 용도입니다.</p>
+        </footer>
+
+<!-- ...existing code... -->
+        <script src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"></script>
+        <script src="./config.js"></script>
+        <script src="./app.js"></script>
+    </body>
+    </html>
