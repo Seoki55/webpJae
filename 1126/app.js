@@ -538,19 +538,25 @@
     if (!el) return;
     el.classList.add('open');
     el.setAttribute('aria-hidden', 'false');
-    // prevent background (page) scrolling while modal is open
-    document.body.classList.add('modal-open');
+    // Prevent background scrolling: add to both html and body
+    try {
+      document.documentElement.classList.add('modal-open');
+      document.body.classList.add('modal-open');
+    } catch (e) { /* 안전하게 무시 */ }
   }
 
   function closeModal(el) {
     if (!el) return;
     el.classList.remove('open');
     el.setAttribute('aria-hidden', 'true');
-    // If no other modal is open, restore page scroll
-    const anyOpen = document.querySelectorAll('.modal.open').length > 0;
-    if (!anyOpen) {
-      document.body.classList.remove('modal-open');
-    }
+    // 다른 모달이 열려있지 않으면 스크롤 잠금 해제
+    try {
+      const anyOpen = document.querySelectorAll('.modal.open').length > 0;
+      if (!anyOpen) {
+        document.documentElement.classList.remove('modal-open');
+        document.body.classList.remove('modal-open');
+      }
+    } catch (e) { /* 안전하게 무시 */ }
   }
 
   function switchAuth(mode) {
