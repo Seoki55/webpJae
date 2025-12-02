@@ -546,6 +546,8 @@
     document.body.style.left = '0';
     document.body.style.right = '0';
     document.body.style.width = '100%';
+    // 추가: html 요소에도 overflow:hidden을 적용해 큰 스크롤이 남지 않도록 함
+    document.documentElement.style.overflow = 'hidden';
   }
 
   function __unlockBodyScroll() {
@@ -555,6 +557,8 @@
     document.body.style.left = '';
     document.body.style.right = '';
     document.body.style.width = '';
+    // remove html overflow lock
+    document.documentElement.style.overflow = '';
     document.documentElement.classList.remove('modal-open');
     document.body.classList.remove('modal-open');
     window.scrollTo(0, __modalScrollY || 0);

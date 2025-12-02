@@ -43,8 +43,15 @@ body.modal-open {
   justify-content: center;
   z-index: 50;
   padding: 16px;
-  /* Allow modal container to handle overflow when centered content is taller */
-  overflow: auto;
+  /* Prevent page-level scrolling (big scrollbar) — internal card will scroll */
+  overflow: hidden; /* 변경: 이전 overflow:auto 를 hidden으로 변경 */
+}
+
+/* When modal is shown keep flex centering */
+.modal.open {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Modal card layout: header fixed, body scrollable */
@@ -59,11 +66,6 @@ body.modal-open {
   border-radius: 18px;
 }
 
-/* header fixed */
-.auth-head {
-  flex: 0 0 auto;
-}
-
 /* body scrolls */
 .auth-body,
 .terms-body,
@@ -74,71 +76,37 @@ body.modal-open {
   padding: 14px 16px 18px;
 }
 
-/* Make terms-card body explicitly scrollable with comfortable max-height */
+/* Terms specific: ensure terms-body scroll is the only scrollbar */
 .terms-card {
   width: min(680px, 94vw);
+  max-height: 92vh; /* 카드 자체가 뷰포트보다 커지지 않도록 제한 */
 }
 .terms-body {
-  max-height: calc(92vh - 120px); /* 헤더/풋터 여백을 감안한 내부 스크롤 여유 */
+  max-height: calc(92vh - 84px); /* 헤더(및 여유) 공간을 제외한 내부 스크롤 높이 */
   overflow: auto;
 }
 
-/* Make auth card responsive: laptop vs desktop */
-.auth-card { width: min(520px, 92vw); }
-
-/* Laptop */
-@media (min-width: 900px) {
-  .auth-card { width: min(600px, 88vw); }
-  .terms-card { width: min(720px, 92vw); }
-}
-
-/* Desktop */
-@media (min-width: 1200px) {
-  .auth-card { width: min(760px, 70vw); }
-  .terms-card { width: min(900px, 78vw); }
-}
-
-/* For very small screens align modal to bottom (bottom sheet) */
-@media (max-width: 768px) {
-  .modal { align-items: flex-end; }
-  .auth-card,
-  .terms-card,
-  .profile-card {
-    width: 100%;
-    max-width: 100%;
-    margin: 0;
-    border-radius: 20px 20px 0 0;
-    max-height: 92vh;
-  }
-  .auth-body { max-height: calc(92vh - 72px); }
-}
-
-/* text-link: not a white button — inline link style consistent with site */
+/* Force link-like appearance for "자세히 보기", 가입/비번 버튼 (prevent white-box look) */
 .text-link,
-.consult .more,
 button.text-link,
-button.more {
+button.more,
+.consent .more {
   appearance: none;
-  background: transparent;
-  border: 0;
-  color: #9fd9ff; /* 눈에 띄는 링크 색상 */
+  background: transparent !important;
+  border: 0 !important;
+  color: #9fd9ff !important;
   cursor: pointer;
   font-size: 13px;
-  padding: 4px 6px;
+  padding: 2px 6px;
   text-decoration: none;
+  line-height: 1;
 }
 .text-link:hover,
 button.text-link:hover,
-button.more:hover {
+button.more:hover,
+.consent .more:hover {
   text-decoration: underline;
-}
-
-/* Ensure .consent .more button (우측 자세히 보기) inherits link look */
-.consent .more {
-  background: transparent;
-  border: 0;
-  color: #9fd9ff;
-  padding: 2px 6px;
+  color: #c6e9ff !important;
 }
 
 /* Particle Canvas */
