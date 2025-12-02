@@ -29,8 +29,116 @@ html, body {
 html.modal-open,
 body.modal-open {
   overflow: hidden !important;
-  height: 100vh !important; /* 안정적으로 화면 고정 */
-  touch-action: none !important; /* 모바일에서 배경 터치 스크롤 방지 */
+  height: 100vh !important;
+  touch-action: none !important;
+}
+
+/* Ensure modals layout uses internal scrolling only */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.8);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+  padding: 16px;
+  /* Allow modal container to handle overflow when centered content is taller */
+  overflow: auto;
+}
+
+/* Modal card layout: header fixed, body scrollable */
+.auth-card,
+.terms-card,
+.profile-card {
+  display: flex;
+  flex-direction: column;
+  max-height: 92vh;
+  overflow: hidden; /* 내부에서만 스크롤 허용 */
+  background: #1a1a2e;
+  border-radius: 18px;
+}
+
+/* header fixed */
+.auth-head {
+  flex: 0 0 auto;
+}
+
+/* body scrolls */
+.auth-body,
+.terms-body,
+.profile-body {
+  flex: 1 1 auto;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 14px 16px 18px;
+}
+
+/* Make terms-card body explicitly scrollable with comfortable max-height */
+.terms-card {
+  width: min(680px, 94vw);
+}
+.terms-body {
+  max-height: calc(92vh - 120px); /* 헤더/풋터 여백을 감안한 내부 스크롤 여유 */
+  overflow: auto;
+}
+
+/* Make auth card responsive: laptop vs desktop */
+.auth-card { width: min(520px, 92vw); }
+
+/* Laptop */
+@media (min-width: 900px) {
+  .auth-card { width: min(600px, 88vw); }
+  .terms-card { width: min(720px, 92vw); }
+}
+
+/* Desktop */
+@media (min-width: 1200px) {
+  .auth-card { width: min(760px, 70vw); }
+  .terms-card { width: min(900px, 78vw); }
+}
+
+/* For very small screens align modal to bottom (bottom sheet) */
+@media (max-width: 768px) {
+  .modal { align-items: flex-end; }
+  .auth-card,
+  .terms-card,
+  .profile-card {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    border-radius: 20px 20px 0 0;
+    max-height: 92vh;
+  }
+  .auth-body { max-height: calc(92vh - 72px); }
+}
+
+/* text-link: not a white button — inline link style consistent with site */
+.text-link,
+.consult .more,
+button.text-link,
+button.more {
+  appearance: none;
+  background: transparent;
+  border: 0;
+  color: #9fd9ff; /* 눈에 띄는 링크 색상 */
+  cursor: pointer;
+  font-size: 13px;
+  padding: 4px 6px;
+  text-decoration: none;
+}
+.text-link:hover,
+button.text-link:hover,
+button.more:hover {
+  text-decoration: underline;
+}
+
+/* Ensure .consent .more button (우측 자세히 보기) inherits link look */
+.consent .more {
+  background: transparent;
+  border: 0;
+  color: #9fd9ff;
+  padding: 2px 6px;
 }
 
 /* Particle Canvas */

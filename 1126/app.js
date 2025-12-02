@@ -534,29 +534,50 @@
   updateSpotifyButtons();
 
   // ===== Auth UI helpers =====
+  let __modalScrollY = 0;
+  function __lockBodyScroll() {
+    __modalScrollY = window.scrollY || document.documentElement.scrollTop || 0;
+    // add classes for CSS-based fixes as well
+    document.documentElement.classList.add('modal-open');
+    document.body.classList.add('modal-open');
+    // prevent background scroll and avoid layout shift
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${__modalScrollY}px`;
+    document.body.style.left = '0';
+    document.body.style.right = '0';
+    document.body.style.width = '100%';
+  }
+
+  function __unlockBodyScroll() {
+    // remove fixed positioning and restore scroll
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.left = '';
+    document.body.style.right = '';
+    document.body.style.width = '';
+    document.documentElement.classList.remove('modal-open');
+    document.body.classList.remove('modal-open');
+    window.scrollTo(0, __modalScrollY || 0);
+    __modalScrollY = 0;
+  }
+
   function openModal(el) {
     if (!el) return;
     el.classList.add('open');
     el.setAttribute('aria-hidden', 'false');
-    // Prevent background scrolling: add to both html and body
-    try {
-      document.documentElement.classList.add('modal-open');
-      document.body.classList.add('modal-open');
-    } catch (e) { /* 안전하게 무시 */ }
+    // Lock background scroll (robust)
+    try { __lockBodyScroll(); } catch (e) { /* ignore */ }
   }
 
   function closeModal(el) {
     if (!el) return;
     el.classList.remove('open');
     el.setAttribute('aria-hidden', 'true');
-    // 다른 모달이 열려있지 않으면 스크롤 잠금 해제
+    // If no other modal is open, restore scroll
     try {
       const anyOpen = document.querySelectorAll('.modal.open').length > 0;
-      if (!anyOpen) {
-        document.documentElement.classList.remove('modal-open');
-        document.body.classList.remove('modal-open');
-      }
-    } catch (e) { /* 안전하게 무시 */ }
+      if (!anyOpen) __unlockBodyScroll();
+    } catch (e) { /* ignore */ }
   }
 
   function switchAuth(mode) {
